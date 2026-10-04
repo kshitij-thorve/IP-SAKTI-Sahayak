@@ -1,0 +1,75 @@
+.error-banner-container {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  background: rgba(127, 29, 29, 0.25);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.error-icon-column {
+  flex-shrink: 0;
+}
+
+.error-sign {
+  color: var(--accent-crimson);
+}
+
+.error-content-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.error-heading {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #FCA5A5;
+}
+
+.error-message-text {
+  font-size: 0.82rem;
+  color: #FECACA;
+  line-height: 1.45;
+}
+
+.error-action-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.error-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.error-action-btn.retry {
+  background: rgba(239, 68, 68, 0.25);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #FFFFFF;
+}
+
+.error-action-btn.retry:hover {
+  background: rgba(239, 68, 68, 0.4);
+}
+
+.error-action-btn.mock-switch {
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #FDE68A;
+}
+
+.error-action-btn.mock-switch:hover {
+  background: rgba(245, 158, 11, 0.35);
+}

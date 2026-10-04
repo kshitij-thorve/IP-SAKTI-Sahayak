@@ -1,0 +1,234 @@
+.ai-processing-container {
+  width: 100%;
+  max-width: 880px;
+  margin: 12px 0 24px;
+  padding: 18px 24px;
+  background: rgba(17, 24, 39, 0.65);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 0 16px rgba(59, 130, 246, 0.05);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.25s ease-out;
+  transition: opacity 0.2s ease;
+}
+
+.processing-content-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Left / Text Side */
+.processing-text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.processing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-blue);
+  background: rgba(59, 130, 246, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.processing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-blue);
+  box-shadow: 0 0 8px var(--accent-blue);
+  animation: pulseGlow 1.2s infinite;
+}
+
+.processing-message-carousel {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.processing-active-message {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  letter-spacing: -0.01em;
+  animation: textFadeIn 0.3s ease-out;
+}
+
+@keyframes textFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.processing-hint {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* Right / Circular AI Animation */
+.processing-visual-column {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ai-circular-rig {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Outer Orbit Ring */
+.ai-ring.outer-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  border-top-color: var(--ai-primary-blue, #3B82F6);
+  border-right-color: rgba(59, 130, 246, 0.4);
+  animation: spinClockwise 2.8s linear infinite;
+}
+
+/* Middle Counter-Rotating Ring */
+.ai-ring.middle-ring {
+  position: absolute;
+  inset: 7px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid transparent;
+  border-bottom-color: #60A5FA;
+  border-left-color: rgba(96, 165, 250, 0.35);
+  animation: spinCounterClockwise 2s linear infinite;
+}
+
+/* Orbital Nodes */
+.orbital-node {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 6px var(--ai-primary-blue, #3B82F6), 0 0 10px #60A5FA;
+}
+
+.node-1 { top: -2px; left: 50%; transform: translateX(-50%); }
+.node-2 { bottom: 4px; right: 4px; }
+.node-3 { top: 4px; left: 4px; width: 4px; height: 4px; }
+
+/* Pulsing Core */
+.ai-core-pulse {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, #3B82F6 0%, #1D4ED8 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px var(--accent-blue-glow, rgba(59, 130, 246, 0.5));
+  animation: corePulse 1.6s ease-in-out infinite;
+}
+
+.core-inner-glow {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: #FFFFFF;
+  opacity: 0.9;
+}
+
+/* Radiance Aura */
+.ai-radiance-aura {
+  position: absolute;
+  inset: -6px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  animation: auraPulse 2.4s ease-in-out infinite;
+}
+
+/* Keyframes */
+@keyframes spinClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinCounterClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes corePulse {
+  0%, 100% { transform: scale(0.92); opacity: 0.85; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes auraPulse {
+  0%, 100% { transform: scale(0.95); opacity: 0.4; }
+  50% { transform: scale(1.15); opacity: 0.8; }
+}
+
+/* Accessibility: Reduced-Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .ai-ring.outer-ring,
+  .ai-ring.middle-ring,
+  .ai-core-pulse,
+  .ai-radiance-aura,
+  .processing-dot {
+    animation: none !important;
+  }
+  
+  .ai-ring.outer-ring {
+    border-color: var(--ai-primary-blue, #3B82F6);
+    opacity: 0.7;
+  }
+  
+  .ai-ring.middle-ring {
+    border-color: #60A5FA;
+    opacity: 0.5;
+  }
+  
+  .ai-core-pulse {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .ai-processing-container {
+    padding: 14px 16px;
+  }
+  .processing-content-layout {
+    gap: 16px;
+  }
+  .processing-active-message {
+    font-size: 0.95rem;
+  }
+  .processing-visual-column {
+    width: 58px;
+    height: 58px;
+  }
+  .ai-circular-rig {
+    width: 48px;
+    height: 48px;
+  }
+}
